@@ -1,0 +1,38 @@
+﻿
+@using Entity
+
+@model  Epersona
+@{
+
+    ViewBag.Title = "EditarGet";
+}
+
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <th colspan="2">Agregar</th>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>@Html.TextBox("nombre", Model.nombre, new { @class = "form-control" })</td>
+            @Html.Hidden("id", Model.id)
+        </tr>
+        <tr>
+            <td>apellido:</td>
+            <td>@Html.TextBox("apellido", Model.apellido, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>Fecha de Nacimiento:</td>
+            <td>@Html.TextBox("fechaNacimiento", Model.fechaNacimiento.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date" })</td>
+        </tr>
+
+        <tr>
+            <td>@Html.ActionLink("Regresar", "Index")</td>
+            <td><input type="submit" name="Editar" value="Editar" class="btn btn-warning" formaction="/Home/EditarPost" /></td>
+        </tr>
+    </table>
+}
+
+

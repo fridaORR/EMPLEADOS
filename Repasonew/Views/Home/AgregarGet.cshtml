@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "AgregarGet";
+}
+
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger">@TempData["error"]</div>
+}
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <th colspan="2">Agregar</th>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>@Html.TextBox("nombre", null, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>Apellido:</td>
+            <td>@Html.TextBox("apellido", null, new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>Fecha de Nacimiento:</td>
+            <td>@Html.TextBox("fechaNacimiento", null, new { @class = "form-control", type = "date" })</td>
+        </tr>
+
+        <tr>
+            <td>@Html.ActionLink("Regresar", "Index")</td>
+            <td><input type="submit" name="Agregar" value="Agregar" class="btn btn-warning" formaction="/Home/AgregarPost" /></td>
+        </tr>
+    </table>
+}

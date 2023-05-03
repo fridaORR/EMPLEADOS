@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Entity.Epersona>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger">@TempData["error"]</div>
+}
+
+@if (TempData["mensaje"] != null)
+{
+    <div class="alert alert-succes">@TempData["mensaje"]</div>
+}
+
+<br />
+
+
+@Html.ActionLink("Agregar Registro", "AgregarGet", null, new { @class = "btn btn-warning" })
+<br />
+
+
+
+<div class="row align-items-center">
+
+    <table class="table table-hover table-responsive">
+        <thead class="table bg-success text-white">
+            <tr>
+                <td colspan="4" class="text-black text-opacity-50" style="text-align:right; font-weight:bold">
+                    Existen @Model.Count() Registros
+                </td>
+            </tr>
+            <tr>
+
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>fechaNacimiento</th>
+                <th></th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+            @foreach (var item in Model)
+
+            {
+                <tr>
+
+                    <td>@item.nombre</td>
+                    <td>@item.apellido</td>
+                    <td>@item.fechaNacimiento </td>
+
+                    <td>
+                        <a href="/Home/EditarGet/@item.id" class="btn btn-success"> Editar</a>
+                        <a href="/Home/Eliminar/@item.id" onclick="return confirm('¿seguro que deseas eliminar ?' )" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
